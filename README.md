@@ -1,6 +1,10 @@
 # ⚡ Eugen Quiz - Sistema de Preguntas y Respuestas en Tiempo Real
 
-Sistema interactivo de preguntas y respuestas en tiempo real desarrollado para **Eugen - Tecnología y Gestión de Siniestros**. Los participantes responden desde sus dispositivos móviles y los resultados se muestran instantáneamente.
+Sistema interactivo de preguntas y respuestas en tiempo real desarrollado para **Eugen - Tecnología y Gestión de Siniestros**.
+
+> **"Libera el color"** - Más cercano, menos complicado
+
+Los participantes responden desde sus dispositivos móviles y los resultados se muestran instantáneamente. Una herramienta moderna y tecnológica que refleja la filosofía de Eugen: simplificar procesos complejos con tecnología.
 
 ## 🚀 Características
 
@@ -168,4 +172,10 @@ MIT
 ---
 
 **Desarrollado para Eugen - Tecnología y Gestión de Siniestros** ⚡
+
+- 🌐 [eugen.solutions](https://eugen.solutions)
+- 📧 hola@eugen.solutions
+- 📍 Madrid, España
+
+*Gestionamos cerca de 600.000 expedientes anuales. Estamos presentes en el 100% de la gestión de un siniestro.*
 
