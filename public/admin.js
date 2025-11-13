@@ -100,6 +100,10 @@ function addOption() {
 }
 
 function addQuestion() {
+    // Prevenir múltiples ejecuciones
+    const btn = document.querySelector('button.btn-primary');
+    if (btn && btn.disabled) return;
+    
     const questionText = document.getElementById('questionText').value.trim();
     const optionInputs = document.querySelectorAll('.option-input');
     const options = Array.from(optionInputs)
@@ -112,6 +116,9 @@ function addQuestion() {
         return;
     }
 
+    // Deshabilitar botón temporalmente
+    if (btn) btn.disabled = true;
+
     const question = {
         question: questionText,
         options: options,
@@ -119,24 +126,35 @@ function addQuestion() {
     };
 
     questions.push(question);
-    updateQuestionList();
     
-    // Enviar al servidor
+    // Usar requestAnimationFrame para actualizar el DOM sin bloquear
+    requestAnimationFrame(() => {
+        updateQuestionList();
+        
+        // Limpiar formulario
+        document.getElementById('questionText').value = '';
+        optionInputs.forEach(input => input.value = '');
+        document.getElementById('correctAnswer').value = '';
+        
+        // Mantener solo 2 opciones (convertir a array para evitar problemas con NodeList)
+        const container = document.getElementById('optionsContainer');
+        const inputsArray = Array.from(container.querySelectorAll('.option-input'));
+        if (inputsArray.length > 2) {
+            inputsArray.slice(2).forEach(input => input.remove());
+        }
+        
+        // Re-habilitar botón
+        if (btn) btn.disabled = false;
+    });
+    
+    // Enviar al servidor de forma asíncrona (no bloquea)
     fetch('/api/questions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ questions: questions })
+    }).catch(err => {
+        console.error('Error al guardar preguntas:', err);
     });
-
-    // Limpiar formulario
-    document.getElementById('questionText').value = '';
-    optionInputs.forEach(input => input.value = '');
-    document.getElementById('correctAnswer').value = '';
-    
-    // Mantener solo 2 opciones
-    while (optionInputs.length > 2) {
-        optionInputs[optionInputs.length - 1].remove();
-    }
 }
 
 function loadQuestionsFromJSON() {
@@ -171,24 +189,42 @@ function updateQuestionList() {
         return;
     }
 
-    container.innerHTML = questions.map((q, index) => {
+    // Usar DocumentFragment para mejor rendimiento
+    const fragment = document.createDocumentFragment();
+    const tempDiv = document.createElement('div');
+    
+    tempDiv.innerHTML = questions.map((q, index) => {
         const isActive = index === currentQuestionIndex;
+        // Escapar HTML para seguridad
+        const questionText = q.question.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const optionsHtml = q.options.map((opt, optIndex) => {
+            const optText = opt.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return `<div>${optIndex + 1}. ${optText} ${q.correct === optIndex ? '✓' : ''}</div>`;
+        }).join('');
+        
         return `
             <div class="question-item ${isActive ? 'active' : ''}">
-                <h4>Pregunta ${index + 1}: ${q.question}</h4>
-                <div class="options">
-                    ${q.options.map((opt, optIndex) => 
-                        `<div>${optIndex + 1}. ${opt} ${q.correct === optIndex ? '✓' : ''}</div>`
-                    ).join('')}
-                </div>
+                <h4>Pregunta ${index + 1}: ${questionText}</h4>
+                <div class="options">${optionsHtml}</div>
             </div>
         `;
     }).join('');
+    
+    // Mover todos los hijos al fragmento de una vez
+    while (tempDiv.firstChild) {
+        fragment.appendChild(tempDiv.firstChild);
+    }
+    
+    // Limpiar y actualizar de una vez
+    container.innerHTML = '';
+    container.appendChild(fragment);
 
     // Actualizar botones
     if (questions.length > 0) {
-        document.getElementById('startBtn').disabled = currentQuestionIndex >= 0;
-        document.getElementById('nextBtn').disabled = currentQuestionIndex >= questions.length - 1;
+        const startBtn = document.getElementById('startBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        if (startBtn) startBtn.disabled = currentQuestionIndex >= 0;
+        if (nextBtn) nextBtn.disabled = currentQuestionIndex >= questions.length - 1;
     }
 }
 
