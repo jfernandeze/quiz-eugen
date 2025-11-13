@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Quiz Navideño</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+    <div class="container">
+        <header class="header">
+            <h1>🎄 Panel de Administración 🎄</h1>
+            <div class="participant-counter">
+                <span id="participantCount">0</span> participantes conectados
+            </div>
+        </header>
+
+        <div class="admin-panel">
+            <section class="questions-section">
+                <h2>Gestionar Preguntas</h2>
+                <div class="questions-list" id="questionsList">
+                    <p class="no-questions">No hay preguntas cargadas. Agrega preguntas usando el formulario.</p>
+                </div>
+                
+                <div class="add-question-form">
+                    <h3>Agregar Pregunta</h3>
+                    <input type="text" id="questionText" placeholder="Escribe la pregunta...">
+                    <div id="optionsContainer">
+                        <input type="text" class="option-input" placeholder="Opción 1">
+                        <input type="text" class="option-input" placeholder="Opción 2">
+                    </div>
+                    <button onclick="addOption()">+ Agregar Opción</button>
+                    <input type="number" id="correctAnswer" placeholder="Respuesta correcta (índice, opcional)" min="0">
+                    <button onclick="addQuestion()" class="btn-primary">Agregar Pregunta</button>
+                </div>
+
+                <div class="load-questions">
+                    <h3>Cargar Preguntas desde JSON</h3>
+                    <textarea id="questionsJSON" placeholder='[{"question": "¿Pregunta?", "options": ["Opción 1", "Opción 2"], "correct": 0}]'></textarea>
+                    <button onclick="loadQuestionsFromJSON()" class="btn-secondary">Cargar Preguntas</button>
+                </div>
+            </section>
+
+            <section class="game-control-section">
+                <h2>Control del Juego</h2>
+                <div class="current-question-info" id="currentQuestionInfo">
+                    <p>No hay pregunta activa</p>
+                </div>
+                
+                <div class="control-buttons">
+                    <button onclick="startQuestion(0)" class="btn-control" id="startBtn">Comenzar Primera Pregunta</button>
+                    <button onclick="nextQuestion()" class="btn-control" id="nextBtn" disabled>Siguiente Pregunta</button>
+                    <button onclick="showResults()" class="btn-control btn-show-results" id="showResultsBtn" disabled>Mostrar Resultados</button>
+                    <button onclick="resetQuestion()" class="btn-control btn-reset">Reiniciar Pregunta</button>
+                    <button onclick="resetGame()" class="btn-control btn-danger">Reiniciar Juego</button>
+                </div>
+
+                <div class="answer-counter">
+                    <span id="answerCount">0</span> respuestas recibidas
+                </div>
+            </section>
+
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>Resultados</h2>
+                <div id="resultsDisplay"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados - Quiz Navideño</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="results-body">
+    <div class="container results-container">
+        <header class="results-header">
+            <h1>🎄 Resultados en Vivo 🎄</h1>
+        </header>
+
+        <div class="results-content">
+            <div id="noResults" class="no-results">
+                <p>Esperando resultados...</p>
+            </div>
+
+            <div id="resultsDisplay" class="results-display" style="display: none;">
+                <div class="question-display">
+                    <h2 id="resultQuestionText"></h2>
+                    <div class="question-info">
+                        <span id="resultQuestionNumber"></span>
+                        <span id="totalAnswers">0 respuestas</span>
+                    </div>
+                </div>
+
+                <div class="stats-container" id="statsContainer">
+                    <!-- Las estadísticas se mostrarán aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="results.js"></script>
+</body>
+</html>
+
