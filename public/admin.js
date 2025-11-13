@@ -64,14 +64,39 @@ function loadState() {
         });
 }
 
+// Variable para prevenir múltiples ejecuciones simultáneas
+let isAddingOption = false;
+
 function addOption() {
-    const container = document.getElementById('optionsContainer');
-    const optionCount = container.children.length;
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.className = 'option-input';
-    input.placeholder = `Opción ${optionCount + 1}`;
-    container.appendChild(input);
+    // Prevenir múltiples clics simultáneos
+    if (isAddingOption) return;
+    isAddingOption = true;
+    
+    // Usar requestAnimationFrame para evitar bloqueos del UI
+    requestAnimationFrame(() => {
+        try {
+            const container = document.getElementById('optionsContainer');
+            const optionCount = container.children.length;
+            
+            // Crear el input de forma optimizada
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'option-input';
+            input.placeholder = `Opción ${optionCount + 1}`;
+            
+            // Añadir el input al DOM
+            container.appendChild(input);
+            
+            // Hacer focus en el nuevo input para mejor UX (después de que se renderice)
+            requestAnimationFrame(() => {
+                input.focus();
+                isAddingOption = false;
+            });
+        } catch (error) {
+            console.error('Error al añadir opción:', error);
+            isAddingOption = false;
+        }
+    });
 }
 
 function addQuestion() {
