@@ -1,0 +1,17 @@
+🚀 INSTRUCCIONES RÁPIDAS DE DESPLIEGUE
+=====================================
+
+✅ CÓDIGO SUBIDO A GITHUB
+   Repositorio: https://github.com/jfernandeze/quiz-eugen.git
+
+✅ DESPLEGADO EN RENDER
+   ¡Tu aplicación ya está desplegada!
+
+🌐 URLs DE TU APLICACIÓN (después del despliegue):
+   - Panel Admin: https://tu-url.onrender.com
+   - Vista Jugador: https://tu-url.onrender.com/player
+   - Vista Resultados: https://tu-url.onrender.com/results
+
+💡 TIP: El plan gratuito puede "dormirse" después de 15 min de inactividad.
+      La primera carga puede tardar unos segundos en despertar.
+

@@ -1,6 +1,6 @@
-# 🎄 Quiz Navideño - Sistema de Preguntas y Respuestas en Tiempo Real
+# ⚡ Eugen Quiz - Sistema de Preguntas y Respuestas en Tiempo Real
 
-Sistema interactivo para eventos presenciales donde los participantes responden preguntas desde sus teléfonos y los resultados se muestran en tiempo real.
+Sistema interactivo de preguntas y respuestas en tiempo real desarrollado para **Eugen - Tecnología y Gestión de Siniestros**. Los participantes responden desde sus dispositivos móviles y los resultados se muestran instantáneamente.
 
 ## 🚀 Características
 
@@ -54,12 +54,12 @@ npm run dev
 
 ### Para los Participantes:
 
-1. Abre http://localhost:3000/player en tu teléfono
+1. Abre la URL del quiz en tu dispositivo móvil
 2. Ingresa tu nombre
 3. Espera a que aparezca la pregunta
 4. Selecciona tu respuesta
 5. Haz clic en "Enviar Respuesta"
-6. Espera a ver los resultados
+6. Espera a ver los resultados en tiempo real
 
 ### Vista de Resultados (Pantalla Pública):
 
@@ -93,21 +93,13 @@ Puedes agregar preguntas de dos formas:
 - `options`: Array con las opciones de respuesta
 - `correct`: Índice de la respuesta correcta (opcional, 0-based)
 
-## 🌐 Configuración de Red
+## 🌐 Acceso a la Aplicación
 
-Para que los participantes se conecten desde sus teléfonos:
-
-1. Asegúrate de que todos estén en la misma red WiFi
-2. Encuentra la IP de tu computadora:
-   - Windows: `ipconfig` (busca IPv4)
-   - Mac/Linux: `ifconfig` o `ip addr`
-3. Los participantes deben usar: `http://TU_IP:3000/player`
-
-Ejemplo: Si tu IP es 192.168.1.100, usarían: `http://192.168.1.100:3000/player`
+La aplicación está desplegada en Render y es accesible desde cualquier lugar con internet. Los participantes pueden conectarse desde cualquier dispositivo sin necesidad de estar en la misma red WiFi.
 
 ## 🎨 Personalización
 
-Puedes modificar los estilos en `public/styles.css` para personalizar los colores y el diseño según tu evento.
+La aplicación está personalizada con los colores corporativos de Eugen (azules tecnológicos). Puedes modificar los estilos en `public/styles.css` si necesitas ajustar el diseño.
 
 ## 🌍 Despliegue en Producción
 
@@ -146,9 +138,10 @@ Para instrucciones detalladas sobre otras plataformas (Railway, Fly.io, Heroku),
 ## 📦 Estructura del Proyecto
 
 ```
-quiz-navideno/
+eugen-quiz/
 ├── server.js          # Servidor Node.js con Socket.io
 ├── package.json       # Dependencias del proyecto
+├── render.yaml        # Configuración para Render
 ├── public/
 │   ├── admin.html     # Panel de administración
 │   ├── player.html    # Vista de participantes
@@ -156,7 +149,7 @@ quiz-navideno/
 │   ├── admin.js       # Lógica del panel admin
 │   ├── player.js      # Lógica de participantes
 │   ├── results.js     # Lógica de resultados
-│   └── styles.css     # Estilos CSS
+│   └── styles.css     # Estilos CSS corporativos
 └── README.md          # Este archivo
 ```
 
@@ -172,5 +165,7 @@ MIT
 
 ---
 
-¡Disfruta tu evento navideño! 🎅🎉
+---
+
+**Desarrollado para Eugen - Tecnología y Gestión de Siniestros** ⚡
 

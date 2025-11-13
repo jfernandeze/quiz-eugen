@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
     min-height: 100vh;
     color: #333;
 }
@@ -19,7 +19,7 @@ body {
 
 /* ===== ADMIN STYLES ===== */
 .admin-body {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
 }
 
 .header {
@@ -34,17 +34,19 @@ body {
 }
 
 .header h1 {
-    color: #2a5298;
+    color: #1e40af;
     font-size: 2em;
+    font-weight: 700;
 }
 
 .participant-counter {
-    background: #4CAF50;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: white;
     padding: 10px 20px;
     border-radius: 25px;
     font-weight: bold;
     font-size: 1.1em;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .admin-panel {
@@ -64,10 +66,11 @@ body {
 .questions-section h2,
 .game-control-section h2,
 .results-section h2 {
-    color: #2a5298;
+    color: #1e40af;
     margin-bottom: 20px;
-    border-bottom: 2px solid #667eea;
+    border-bottom: 3px solid #3b82f6;
     padding-bottom: 10px;
+    font-weight: 600;
 }
 
 .questions-list {
@@ -81,12 +84,13 @@ body {
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 8px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #3b82f6;
 }
 
 .question-item.active {
-    background: #e3f2fd;
-    border-left-color: #2196F3;
+    background: #dbeafe;
+    border-left-color: #3b82f6;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
 }
 
 .question-item h4 {
@@ -120,7 +124,8 @@ body {
 .add-question-form input[type="text"]:focus,
 .add-question-form input[type="number"]:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .option-input {
@@ -165,14 +170,14 @@ body {
 }
 
 .btn-control {
-    background: #667eea;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: white;
 }
 
 .btn-control:hover:not(:disabled) {
-    background: #5568d3;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
 
 .btn-control:disabled {
@@ -232,17 +237,18 @@ body {
 .answer-counter {
     margin-top: 15px;
     padding: 15px;
-    background: #f0f0f0;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
     border-radius: 8px;
     text-align: center;
     font-size: 1.2em;
     font-weight: bold;
-    color: #667eea;
+    color: #1e40af;
+    border: 2px solid #3b82f6;
 }
 
 /* ===== PLAYER STYLES ===== */
 .player-body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
 }
 
 .player-container {
@@ -327,11 +333,12 @@ body {
 }
 
 .question-number {
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.95);
     padding: 8px 16px;
     border-radius: 20px;
     font-weight: bold;
-    color: #667eea;
+    color: #1e40af;
+    border: 2px solid #3b82f6;
 }
 
 .question-card h2 {
@@ -359,14 +366,16 @@ body {
 }
 
 .option-button:hover {
-    background: #e8e8e8;
-    border-color: #667eea;
+    background: #e0e7ff;
+    border-color: #3b82f6;
+    transform: translateX(5px);
 }
 
 .option-button.selected {
-    background: #667eea;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: white;
-    border-color: #5568d3;
+    border-color: #1d4ed8;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .btn-submit {
@@ -431,7 +440,7 @@ body {
 
 /* ===== RESULTS STYLES ===== */
 .results-body {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
 }
 
 .results-container {
@@ -501,7 +510,7 @@ body {
 
 .stat-bar {
     height: 100%;
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -510,6 +519,7 @@ body {
     font-weight: bold;
     transition: width 0.5s ease;
     min-width: 50px;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .stat-item.correct .stat-bar {

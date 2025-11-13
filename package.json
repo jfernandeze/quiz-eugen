@@ -1,13 +1,13 @@
 {
-  "name": "quiz-navideno",
+  "name": "eugen-quiz",
   "version": "1.0.0",
-  "description": "Sistema de preguntas y respuestas para evento navideño",
+  "description": "Sistema de preguntas y respuestas interactivo para Eugen - Tecnología y Gestión de Siniestros",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": ["quiz", "navidad", "evento"],
+  "keywords": ["quiz", "eugen", "tecnologia", "siniestros", "interactivo"],
   "author": "",
   "license": "MIT",
   "dependencies": {
